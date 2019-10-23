@@ -1,9 +1,11 @@
 .Palette {
-  height: 100vh;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .Palette-colors {
-  height: 90%
+  height: 90vh
 }
 
 .Palette-footer {
