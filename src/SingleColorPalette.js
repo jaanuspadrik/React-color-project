@@ -1,11 +1,15 @@
 import React, {Component} from "react";
 import ColorBox from './ColorBox';
+import Palettefooter from './PaletteFooter';
+import Navbar from './Navbar';
 import {withStyles} from "@material-ui/styles";
 
 class SingleColorPalette extends Component {
   constructor(props){
     super(props);
     this._shades = this.gatherShades(this.props.palette, this.props.colorId);
+    this.state = {format: "hex"};
+    this.changeFormat = this.changeFormat.bind(this);
   }
   gatherShades(palette, colorToFilterBy){
     let shades = [];
@@ -17,14 +21,20 @@ class SingleColorPalette extends Component {
     }
     return shades.slice(1);
   }
+  changeFormat(val){
+    this.setState({format: val})
+  }
   render() {
+    const {format} = this.state;
+    const {paletteName, emoji} = this.props.palette;
     const colorBoxes = this._shades.map(color => (
-      <ColorBox key={color.id} name={color.name} background={color.hex} showLink={false}/>
+      <ColorBox key={color.id} name={color.name} background={color[format]} showLink={false}/>
     ))
     return (
       <div className="Palette">
-        <h1>Single color palette</h1>
+        <Navbar handleChange={this.changeFormat} showingAllColors={false}/>
         <div className="Palette-colors">{colorBoxes}</div>
+        <Palettefooter paletteName={paletteName} emoji={emoji}/>
       </div>
     );
   }
