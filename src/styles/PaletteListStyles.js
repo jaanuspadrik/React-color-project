@@ -1,6 +1,6 @@
 export default {
   root: {
-    backgroundColor: "blue",
+    backgroundColor: "white",
     height: "100vh",
     display: "flex",
     alignItems: "flex-start",
@@ -16,7 +16,7 @@ export default {
     display: "flex",
     width: "100%",
     justifyContent: "space-between",
-    color: "white"
+    alignItems: "center"
   },
   palettes: {
     boxSizing: "border-box",
